@@ -23,8 +23,8 @@ from research_agent.prompts import (  # research_agent/prompts.py
 from research_agent.tools import tavily_search, think_tool  # research_agent/tools.py
 
 # Limits
-max_concurrent_research_units = 3
-max_researcher_iterations = 3
+max_concurrent_research_units = 5
+max_researcher_iterations = 5
 
 # Get current date
 current_date = datetime.now().strftime("%Y-%m-%d")
@@ -74,7 +74,7 @@ def make_backend(runtime):
 model = ChatOpenAI(
     base_url=os.getenv("DASHSCOPE_API_BASE"),
     api_key=os.environ.get("DASHSCOPE_API_KEY"),
-    model="qwen-max-2025-01-25", # 选好模型很关键，差模型会fail
+    model="glm-4.7", # 选好模型很关键，差模型会fail
     timeout=60.0,
     max_retries=3,
 )
